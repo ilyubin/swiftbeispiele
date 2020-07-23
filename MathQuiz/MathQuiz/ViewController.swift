@@ -13,16 +13,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var quizLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
-    var model: Quiz!
+    var quiz: Quiz!
     var successCount: Int = 0
     var failCount: Int = 0
     
     private func generateQuiz() {
-        model = Quiz.generate()
+        quiz = Quiz.generate()
     }
     
     private func showQuiz() {
-        quizLabel.text = "\(model.x) \(model.getOperationSymbol()) \(model.y) = ?"
+        quizLabel.text = "\(quiz.x) \(getOperationSymbol()) \(quiz.y) = ?"
     }
     
     fileprivate func showSuccess() {
@@ -45,6 +45,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         statusLabel.text = String(repeating: "👎", count: failCount)
     }
     
+    fileprivate func getOperationSymbol() -> String {
+        switch quiz.operation {
+        case .plus:
+            return "+"
+        case .minus:
+            return "-"
+        case .multiply:
+            return "*"
+        case .division:
+            return "/"
+        }
+    }
+    
     fileprivate func parseValue() -> Int {
         guard let text = textField.text, let value = Int(text) else { return Int.max }
         return value
@@ -53,7 +66,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let value = parseValue()
         textField.text = nil
-        if !model.check(value: value) {
+        if !quiz.check(value: value) {
             showFail()
             return false
         }
@@ -78,3 +91,5 @@ class ViewController: UIViewController, UITextFieldDelegate {
 // - как сделать обработку - если вводим слова буквами "hello"?
 // - постоянно пишет Use of undeclared type 'Quiz' ?
 // - может ли быть логика в модели? жирные контроллеры?
+// - как создавать исключения/ошибки?
+// - как сделать иконку у приложения?

@@ -16,29 +16,16 @@ struct Quiz {
     static func generate() -> Quiz {
         let o = Operation.allCases.randomElement()!
         let y = Int.random(in: (1...9))
-        let x = generateX(yy: y, operation: o)
+        let x = generateX(y: y, operation: o)
         return Quiz(x: x, y: y, operation: o)
     }
     
-    static private func generateX(yy: Int, operation: Operation) -> Int {
-        let xx = Int.random(in: (1...9))
+    static private func generateX(y: Int, operation: Operation) -> Int {
+        let x = Int.random(in: (1...9))
         if operation == Operation.division {
-            return xx * yy
+            return x * y
         }
-        return xx
-    }
-    
-    func getOperationSymbol() -> String {
-        switch operation {
-        case .plus:
-            return "+"
-        case .minus:
-            return "-"
-        case .multiply:
-            return "*"
-        case .division:
-            return "/"
-        }
+        return x
     }
     
     func check(value: Int) -> Bool {
