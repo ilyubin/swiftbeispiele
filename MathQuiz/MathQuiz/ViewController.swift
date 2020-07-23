@@ -13,29 +13,54 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var quizLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
-    var model: QuizModel!
+    var model: Quiz!
+    var successCount: Int = 0
+    var failCount: Int = 0
     
     private func generateQuiz() {
-        let x = Int.random(in: (1...9))
-        let y = Int.random(in: (1...9))
-        model = QuizModel(x: x, y: y)
+        model = Quiz.generate()
     }
     
     private func showQuiz() {
-        quizLabel.text = "\(model.x) + \(model.y) = ?"
+        quizLabel.text = "\(model.x) \(model.getOperationSymbol()) \(model.y) = ?"
+    }
+    
+    fileprivate func showSuccess() {
+        successCount += 1
+        failCount = 0
+        if successCount >= 10 {
+            statusLabel.text = "🥰"
+            return
+        }
+        statusLabel.text = String(repeating: "👍", count: successCount)
+    }
+    
+    fileprivate func showFail() {
+        successCount = 0
+        failCount += 1
+        if failCount >= 10 {
+            statusLabel.text = "😡"
+            return
+        }
+        statusLabel.text = String(repeating: "👎", count: failCount)
+    }
+    
+    fileprivate func parseValue() -> Int {
+        guard let text = textField.text, let value = Int(text) else { return Int.max }
+        return value
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard let text = textField.text, let value = Int(text) else { return false }
+        let value = parseValue()
         textField.text = nil
-        if value == model.x + model.y {
-            statusLabel.text = "👍"
-            generateQuiz()
-            showQuiz()
-        } else {
-            statusLabel.text = "👎"
+        if !model.check(value: value) {
+            showFail()
+            return false
         }
-        return false
+        generateQuiz()
+        showQuiz()
+        showSuccess()
+        return true
     }
    
     override func viewDidLoad() {
@@ -47,3 +72,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         showQuiz()
     }
 }
+
+// Questions
+// - как сделать клавиатуру только из цифр?
+// - как сделать обработку - если вводим слова буквами "hello"?
+// - постоянно пишет Use of undeclared type 'Quiz' ?
+// - может ли быть логика в модели? жирные контроллеры?
