@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var quizLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
+    
     var quiz: Quiz!
     var successCount: Int = 0
     var failCount: Int = 0
@@ -22,7 +23,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func showQuiz() {
-        quizLabel.text = "\(quiz.x) \(getOperationSymbol()) \(quiz.y) = ?"
+        quizLabel.text = "\(quiz.x) \(getOperationSymbol(operation: quiz.operation)) \(quiz.y) = ?"
     }
     
     fileprivate func showSuccess() {
@@ -45,8 +46,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         statusLabel.text = String(repeating: "👎", count: failCount)
     }
     
-    fileprivate func getOperationSymbol() -> String {
-        switch quiz.operation {
+    fileprivate func getOperationSymbol(operation: Operation) -> String {
+        switch operation {
         case .plus:
             return "+"
         case .minus:
@@ -58,13 +59,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    fileprivate func parseValue() -> Int {
-        guard let text = textField.text, let value = Int(text) else { return Int.max }
-        return value
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let value = parseValue()
+        guard let text = textField.text, let value = Int(text) else {
+            return false
+        }
         textField.text = nil
         if !quiz.check(value: value) {
             showFail()
@@ -75,11 +73,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
         showSuccess()
         return true
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let set = CharacterSet.decimalDigits.union(CharacterSet(charactersIn: "-"))
+        for u in string.unicodeScalars {
+            if !set.contains(u) {
+                return false
+            }
+        }
+        return true
+    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         textField.delegate = self
+        //textField.keyboardType = UIKeyboardType.numberPad
         statusLabel.text = nil
         generateQuiz()
         showQuiz()
@@ -87,9 +96,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
 }
 
 // Questions
-// - как сделать клавиатуру только из цифр?
+// - как сделать клавиатуру только из цифр? Где тогда будет Enter?
 // - как сделать обработку - если вводим слова буквами "hello"?
 // - постоянно пишет Use of undeclared type 'Quiz' ?
 // - может ли быть логика в модели? жирные контроллеры?
 // - как создавать исключения/ошибки?
-// - как сделать иконку у приложения?
