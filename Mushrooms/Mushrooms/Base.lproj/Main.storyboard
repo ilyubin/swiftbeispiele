@@ -112,12 +112,12 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="d" destination="opG-GB-4fK" id="MbC-NX-H1z"/>
                         <outlet property="favButton" destination="8bl-WC-shh" id="6KU-wn-YtS"/>
+                        <outlet property="mushroomDescription" destination="opG-GB-4fK" id="q8e-o1-kFF"/>
+                        <outlet property="mushroomPicture" destination="uTI-6T-ZY8" id="Etq-Bm-8Uv"/>
+                        <outlet property="mushroomTitle" destination="5DB-mQ-1NS" id="wwD-Wy-Wuy"/>
                         <outlet property="nextButton" destination="8Fr-zO-9CD" id="P19-GC-UoR"/>
-                        <outlet property="p" destination="uTI-6T-ZY8" id="qgy-b6-uHe"/>
                         <outlet property="prevButton" destination="0fC-pa-oAL" id="Pdy-7R-ZsL"/>
-                        <outlet property="t" destination="5DB-mQ-1NS" id="reX-ia-chM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
