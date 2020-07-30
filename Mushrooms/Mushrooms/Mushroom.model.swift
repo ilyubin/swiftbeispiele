@@ -12,5 +12,5 @@ struct Mushroom {
     let title: String
     let description: String
     let picture: String
-    let isFavorite: Bool
+    var isFavorite: Bool
 }
