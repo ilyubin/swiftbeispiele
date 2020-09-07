@@ -9,25 +9,27 @@
 /* Begin PBXBuildFile section */
 		400DD54A24D0CCC500CE43DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DD54924D0CCC500CE43DD /* AppDelegate.swift */; };
 		400DD54C24D0CCC500CE43DD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DD54B24D0CCC500CE43DD /* SceneDelegate.swift */; };
-		400DD54E24D0CCC500CE43DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DD54D24D0CCC500CE43DD /* ViewController.swift */; };
+		400DD54E24D0CCC500CE43DD /* MushroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DD54D24D0CCC500CE43DD /* MushroomViewController.swift */; };
 		400DD55124D0CCC500CE43DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 400DD54F24D0CCC500CE43DD /* Main.storyboard */; };
 		400DD55324D0CCC700CE43DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 400DD55224D0CCC700CE43DD /* Assets.xcassets */; };
 		400DD55624D0CCC700CE43DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 400DD55424D0CCC700CE43DD /* LaunchScreen.storyboard */; };
 		400DD55E24D2002D00CE43DD /* Mushroom.model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DD55D24D2002D00CE43DD /* Mushroom.model.swift */; };
 		400DD56024D210DD00CE43DD /* Mushroom.data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400DD55F24D210DD00CE43DD /* Mushroom.data.swift */; };
+		40B373F824D369E3000F595C /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B373F724D369E3000F595C /* FavoritesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		400DD54624D0CCC500CE43DD /* Mushrooms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mushrooms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		400DD54924D0CCC500CE43DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		400DD54B24D0CCC500CE43DD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		400DD54D24D0CCC500CE43DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		400DD54D24D0CCC500CE43DD /* MushroomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MushroomViewController.swift; sourceTree = "<group>"; };
 		400DD55024D0CCC500CE43DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		400DD55224D0CCC700CE43DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		400DD55524D0CCC700CE43DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		400DD55724D0CCC700CE43DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		400DD55D24D2002D00CE43DD /* Mushroom.model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mushroom.model.swift; sourceTree = "<group>"; };
 		400DD55F24D210DD00CE43DD /* Mushroom.data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mushroom.data.swift; sourceTree = "<group>"; };
+		40B373F724D369E3000F595C /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,13 +64,14 @@
 			children = (
 				400DD54924D0CCC500CE43DD /* AppDelegate.swift */,
 				400DD54B24D0CCC500CE43DD /* SceneDelegate.swift */,
-				400DD54D24D0CCC500CE43DD /* ViewController.swift */,
-				400DD54F24D0CCC500CE43DD /* Main.storyboard */,
 				400DD55224D0CCC700CE43DD /* Assets.xcassets */,
 				400DD55424D0CCC700CE43DD /* LaunchScreen.storyboard */,
 				400DD55724D0CCC700CE43DD /* Info.plist */,
 				400DD55D24D2002D00CE43DD /* Mushroom.model.swift */,
 				400DD55F24D210DD00CE43DD /* Mushroom.data.swift */,
+				400DD54F24D0CCC500CE43DD /* Main.storyboard */,
+				400DD54D24D0CCC500CE43DD /* MushroomViewController.swift */,
+				40B373F724D369E3000F595C /* FavoritesViewController.swift */,
 			);
 			path = Mushrooms;
 			sourceTree = "<group>";
@@ -145,9 +148,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				400DD55E24D2002D00CE43DD /* Mushroom.model.swift in Sources */,
-				400DD54E24D0CCC500CE43DD /* ViewController.swift in Sources */,
+				400DD54E24D0CCC500CE43DD /* MushroomViewController.swift in Sources */,
 				400DD54A24D0CCC500CE43DD /* AppDelegate.swift in Sources */,
 				400DD54C24D0CCC500CE43DD /* SceneDelegate.swift in Sources */,
+				40B373F824D369E3000F595C /* FavoritesViewController.swift in Sources */,
 				400DD56024D210DD00CE43DD /* Mushroom.data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol MushroomSelector {
+    func setPage(index: Int)
+}
+
 class ViewController: UIViewController {
     
     @IBOutlet weak var mushroomTitle: UILabel!
@@ -15,7 +19,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var mushroomPicture: UIImageView!
     @IBOutlet weak var prevButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var favButton: UIButton!
+    @IBOutlet weak var favIcon: UIImageView!
     
     var mushrooms: [Mushroom] = []
     var index: Int = 0
@@ -23,6 +27,7 @@ class ViewController: UIViewController {
     fileprivate func setupDescriptionTextContainer() {
         mushroomDescription.textContainer.lineFragmentPadding = 0
         mushroomDescription.textContainerInset = .zero
+        mushroomDescription.isEditable = false
     }
     
     fileprivate func plusIndex() {
@@ -38,11 +43,12 @@ class ViewController: UIViewController {
     }
 
     fileprivate func showMushroomByIndex(index: Int) {
+        mushroomDescription.contentOffset = .zero
         let m = mushrooms[index]
         mushroomTitle.text = m.title
         mushroomDescription.text = m.description
         mushroomPicture.image = UIImage(named: (m.picture))
-        showFavButton(isFavorite: m.isFavorite)
+        showFavIcon(isFavorite: m.isFavorite)
     }
     
     fileprivate func showPrevButton() {
@@ -53,9 +59,9 @@ class ViewController: UIViewController {
         nextButton.setTitle("next", for: .normal)
     }
     
-    fileprivate func showFavButton(isFavorite: Bool) {
-        let title = isFavorite ? "remove from favorite" : "to favorite"
-        favButton.setTitle(title, for: .normal)
+    fileprivate func showFavIcon(isFavorite: Bool) {
+        let iconName = isFavorite ? "star.fill" : "star"
+        favIcon.image = UIImage(systemName: iconName)
     }
     
     @IBAction func goPrev(_ sender: AnyObject?) {
@@ -70,19 +76,47 @@ class ViewController: UIViewController {
     
     @IBAction func addToFavorite(_ sender: AnyObject?) {
         mushrooms[index].isFavorite = !mushrooms[index].isFavorite
-        showFavButton(isFavorite: mushrooms[index].isFavorite)
+        showFavIcon(isFavorite: mushrooms[index].isFavorite)
+    }
+    
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+       if gesture.direction == .right {
+            goPrev(nil)
+            return
+       }
+       if gesture.direction == .left {
+            goNext(nil)
+       }
+    }
+    
+    fileprivate func addGesture(_ direction: UISwipeGestureRecognizer.Direction) {
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeLeft.direction = direction
+        self.view.addGestureRecognizer(swipeLeft)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupDescriptionTextContainer()
+        favIcon.isUserInteractionEnabled = true
         
         mushrooms = getMushrooms()
         
         showMushroomByIndex(index: 0)
         showPrevButton()
         showNextButton()
+        
+        addGesture(.left)
+        addGesture(.right)
     }
 }
 
+extension ViewController : MushroomSelector {
+    func setPage(index: Int) {
+        guard index >= 0, index < mushrooms.count else {
+            return
+        }
+        showMushroomByIndex(index: index)
+    }
+}
