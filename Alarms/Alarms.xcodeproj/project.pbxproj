@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40DA8DAE250972EA00A6EBFE /* AlarmDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DA8DAD250972EA00A6EBFE /* AlarmDetailsViewController.swift */; };
 		E3572F4A24FAD3C100A1B1BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3572F4924FAD3C100A1B1BF /* AppDelegate.swift */; };
 		E3572F4E24FAD3C100A1B1BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3572F4D24FAD3C100A1B1BF /* ViewController.swift */; };
 		E3572F5124FAD3C100A1B1BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3572F4F24FAD3C100A1B1BF /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		40DA8DAD250972EA00A6EBFE /* AlarmDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailsViewController.swift; sourceTree = "<group>"; };
 		E3572F4624FAD3C100A1B1BF /* Alarms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3572F4924FAD3C100A1B1BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3572F4D24FAD3C100A1B1BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				E3572F7924FAD3F700A1B1BF /* Alarm.swift */,
 				E3572F7B24FAD40A00A1B1BF /* AlarmStore.swift */,
 				E3572F7D24FADBDE00A1B1BF /* Router.swift */,
+				40DA8DAD250972EA00A6EBFE /* AlarmDetailsViewController.swift */,
 			);
 			path = Alarms;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			files = (
 				E3572F4E24FAD3C100A1B1BF /* ViewController.swift in Sources */,
 				E3572F4A24FAD3C100A1B1BF /* AppDelegate.swift in Sources */,
+				40DA8DAE250972EA00A6EBFE /* AlarmDetailsViewController.swift in Sources */,
 				E3572F7E24FADBDE00A1B1BF /* Router.swift in Sources */,
 				E3572F7C24FAD40A00A1B1BF /* AlarmStore.swift in Sources */,
 				E3572F7A24FAD3F700A1B1BF /* Alarm.swift in Sources */,

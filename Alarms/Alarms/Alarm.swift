@@ -7,13 +7,13 @@
 
 import Foundation
 
-final class Alarm : Codable {
+struct Alarm : Codable {
     
-    init(name: String? = nil, alarmDate: Date, shouldNotify: Bool) {
+    init() {
         self.id = UUID()
-        self.name = name
-        self.alarmDate = alarmDate
-        self.shouldNotify = shouldNotify
+        self.name = nil
+        self.alarmDate = Date()
+        self.shouldNotify = true
     }
     
     let id: UUID

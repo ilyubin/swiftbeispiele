@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mainViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "MainViewController") as! ViewController
         let rootViewController = UINavigationController(rootViewController: mainViewController)
         
-        let router = Router()
+        let router = Router(alarmStore: alarmStore, topNavigationController: rootViewController)
         
         //DI
         mainViewController.alarmStore = alarmStore

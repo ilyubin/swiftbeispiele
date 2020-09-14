@@ -13,8 +13,22 @@ enum PresentationStyle {
 }
 
 protocol RouterProtocol: AnyObject {
+    func pop()
 }
 
 class Router: RouterProtocol {
-
+    private let alarmStore: AlarmStoreProtocol
+    private let topNavigationController: UINavigationController
+    
+    init(
+        alarmStore: AlarmStoreProtocol,
+        topNavigationController: UINavigationController
+    ) {
+        self.alarmStore = alarmStore
+        self.topNavigationController = topNavigationController
+    }
+    
+    func pop() {
+        topNavigationController.popViewController(animated: true)
+    }
 }

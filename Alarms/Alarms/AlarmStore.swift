@@ -12,11 +12,15 @@ extension Notification.Name {
 }
 
 protocol AlarmStoreProtocol: AnyObject {
-    var alarms: [Alarm] { get set }
+    var alarms: [Alarm] { get }
+    func createAlarm() -> UUID
+    func updateAlarm(with: UUID, modification: (inout Alarm) -> Void)
+    func deleteAlarm(with: UUID)
     func save()
 }
 
 class AlarmStore: AlarmStoreProtocol {
+    
     private let alarmStoreURL: URL = {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         return documentsDirectory.appendingPathComponent("alarms.data")
@@ -29,16 +33,6 @@ class AlarmStore: AlarmStoreProtocol {
         }
     }
     
-    func save() {
-        print("saving alarms to file \(alarmStoreURL)")
-        do {
-            let data = try JSONEncoder().encode(alarms)
-            try data.write(to: alarmStoreURL)
-        } catch {
-            print(error)
-        }
-    }
-    
     init() {
         guard
             let data = try? Data(contentsOf: alarmStoreURL),
@@ -47,5 +41,43 @@ class AlarmStore: AlarmStoreProtocol {
             return
         }
         alarms = decodedAlarms
+    }
+    
+    func createAlarm() -> UUID {
+        let alarm = Alarm()
+        alarms.append(alarm)
+//        notificationService.scheduleNotification(from: alarm)
+        save()
+        return alarm.id
+    }
+    
+    func updateAlarm(with id: UUID, modification: (inout Alarm) -> Void) {
+        guard let index = alarms.firstIndex(where: { $0.id == id }) else {
+            fatalError("no alarm with index \(id)")
+        }
+        modification(&alarms[index])
+        save()
+        let alarm = alarms[index]
+        if !alarm.shouldNotify {
+//            notificationService.removeNotification(with: alarm.id)
+            return
+        }
+//            notificationService.scheduleNotification(from: alarm)
+    }
+    
+    func deleteAlarm(with id: UUID) {
+        alarms.removeAll(where: { $0.id == id })
+//        notificationService.removeNotification(with: id)
+        save()
+    }
+    
+    func save() {
+        print("saving alarms to file \(alarmStoreURL)")
+        do {
+            let data = try JSONEncoder().encode(alarms)
+            try data.write(to: alarmStoreURL)
+        } catch {
+            print(error)
+        }
     }
 }
