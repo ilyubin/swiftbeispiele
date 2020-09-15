@@ -10,6 +10,8 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
    
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBAction func act(_ sender: AnyObject?) {
         guard let mushroomSelector = tabBarController?.viewControllers?.first as? MushroomSelector else {
             return
@@ -20,7 +22,9 @@ class FavoritesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        tableView.dataSource = self
+        tableView.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -35,4 +39,27 @@ class FavoritesViewController: UIViewController {
     }
     */
 
+}
+
+extension FavoritesViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: .cellReuseIdentifier, for: indexPath)
+        cell.textLabel?.text = "Бип"
+        cell.detailTextLabel?.text = "Белый"
+        return cell
+    }
+}
+
+extension FavoritesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Обрабатываем выбор ячейки
+    }
+}
+
+private extension String {
+    static let cellReuseIdentifier = "Cell"
 }

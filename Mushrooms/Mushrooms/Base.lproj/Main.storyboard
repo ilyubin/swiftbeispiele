@@ -155,6 +155,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="xdd-7w-0h4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="teo-dk-0wv">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -175,23 +176,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mG5-JG-uH8">
-                                <rect key="frame" x="184" y="657" width="46" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCJ-dU-gJD">
-                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
-                                        <state key="normal" title="Button"/>
-                                        <connections>
-                                            <action selector="act:" destination="17o-hK-H6j" eventType="touchUpInside" id="q6A-uK-fO9"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="mwj-TL-EgV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="wpL-n4-UzM">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wpL-n4-UzM" id="hMu-ma-Kas">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="WNe-iF-69C" firstAttribute="bottom" secondItem="mwj-TL-EgV" secondAttribute="bottom" id="GVl-eL-dMn"/>
+                            <constraint firstItem="WNe-iF-69C" firstAttribute="trailing" secondItem="mwj-TL-EgV" secondAttribute="trailing" id="NRo-hb-TLe"/>
+                            <constraint firstItem="mwj-TL-EgV" firstAttribute="top" secondItem="WNe-iF-69C" secondAttribute="top" id="VJj-yO-18F"/>
+                            <constraint firstItem="mwj-TL-EgV" firstAttribute="leading" secondItem="WNe-iF-69C" secondAttribute="leading" id="kFY-WB-J7I"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="WNe-iF-69C"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Favorite" image="star" catalog="system" id="2Yt-Hc-LHv"/>
+                    <connections>
+                        <outlet property="tableView" destination="mwj-TL-EgV" id="nG6-Lc-xUy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hZA-B6-p56" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

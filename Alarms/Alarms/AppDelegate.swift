@@ -16,12 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        //alarmStore.alarms.append(Alarm(name: "A1", alarmDate: Date().addingTimeInterval(200), shouldNotify: true))
-        //alarmStore.alarms.append(Alarm(name: "A2", alarmDate: Date().addingTimeInterval(10000), shouldNotify: true))
+        alarmStore.createAlarm()
+        alarmStore.createAlarm()
         
-        // Override point for customization after application launch.
         window = UIWindow(frame: UIScreen.main.bounds)
-        let mainViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "MainViewController") as! ViewController
+        let mainViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "MainViewController") as! AlarmListViewController
         let rootViewController = UINavigationController(rootViewController: mainViewController)
         
         let router = Router(alarmStore: alarmStore, topNavigationController: rootViewController)

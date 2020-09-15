@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AlarmListViewController: UIViewController {
     
     //DI
     var alarmStore: AlarmStoreProtocol!
@@ -34,10 +34,12 @@ class ViewController: UIViewController {
         
         let timer = Timer(timeInterval: 1, target: self, selector: #selector(handleTimer(_:)), userInfo: nil, repeats: true)
         RunLoop.main.add(timer, forMode: .common)
+        navigationItem.title = "Alarms"
     }
     
     @objc private func handleAlarmStoreUpdate() {
         // Перезагружаем ячейки в table view
+        tableView.reloadData()
     }
     
     @objc private func handleTimer(_ sender: Any) {
@@ -60,7 +62,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension AlarmListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarmStore.alarms.count
     }
@@ -74,9 +76,10 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension AlarmListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Обрабатываем выбор ячейки
+        router.openAlarmDetails(withID: alarmStore.alarms[indexPath.item].id, style: .push)
     }
 }
 
