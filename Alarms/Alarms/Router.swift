@@ -21,7 +21,7 @@ protocol RouterProtocol: AnyObject {
 class Router: RouterProtocol {
     private let alarmStore: AlarmStoreProtocol
     private let topNavigationController: UINavigationController
-    
+
     init(
         alarmStore: AlarmStoreProtocol,
         topNavigationController: UINavigationController
@@ -29,7 +29,7 @@ class Router: RouterProtocol {
         self.alarmStore = alarmStore
         self.topNavigationController = topNavigationController
     }
-    
+
     func openAlarmDetails(withID id: UUID, style: PresentationStyle) {
         let detailsController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "AlarmDetail") as! AlarmDetailsViewController
         detailsController.alarmStore = alarmStore
@@ -53,18 +53,18 @@ class Router: RouterProtocol {
             let cancelButton: UIBarButtonItem = UIBarButtonItem(
                 title: "Cancel",
                 style: .plain, target:
-                detailsController,
+            detailsController,
                 action: #selector(AlarmDetailsViewController.cancelAlarm)
             )
             detailsController.navigationItem.leftBarButtonItem = cancelButton
             topNavigationController.present(navigationController, animated: true, completion: nil)
         }
     }
-    
+
     func pop() {
         topNavigationController.popViewController(animated: true)
     }
-    
+
     func openAlarmEditDialog(completion: @escaping (String?) -> Void) {
         let alertController = UIAlertController(
             title: "Name",
@@ -77,8 +77,9 @@ class Router: RouterProtocol {
             let name = alertController.textFields?[0].text
             completion(name)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in }
-        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+        }
+
         alertController.addTextField { (textField) in
             textField.placeholder = "Name"
         }

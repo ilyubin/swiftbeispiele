@@ -8,13 +8,13 @@
 import UIKit
 
 class AlarmListViewController: UIViewController {
-    
+
     //DI
     var alarmStore: AlarmStoreProtocol!
     var router: RouterProtocol!
-    
+
     @IBOutlet weak var tableView: UITableView!
-    
+
     private let dateIntervalFormatter: DateComponentsFormatter = {
         let formatter = DateComponentsFormatter()
         formatter.unitsStyle = .full
@@ -24,11 +24,11 @@ class AlarmListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         //Настраиваем tableView
         tableView.dataSource = self
         tableView.delegate = self
-        
+
         //Перезагружаем список ячеек при изменениях в хранилище
         NotificationCenter.default.addObserver(
             self,
@@ -36,7 +36,7 @@ class AlarmListViewController: UIViewController {
             name: .AlarmStoreDidUpdateData,
             object: nil
         )
-        
+
         let timer = Timer(
             timeInterval: 1,
             target: self,
@@ -49,23 +49,27 @@ class AlarmListViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Add", style: .plain, target: self, action: #selector(handleNewAlarm))
     }
-    
+
     @objc private func handleAlarmStoreUpdate() {
         // Перезагружаем ячейки в table view
         tableView.reloadData()
     }
-    
+
     @objc private func handleTimer(_ sender: Any) {
         // Обработка таймера - обновляем оставшееся время в ячейках
-        guard let indexPath = tableView.indexPathsForVisibleRows else { return }
-        indexPath.forEach{
-            guard let cell = tableView.cellForRow(at: $0) else { return }
+        guard let indexPath = tableView.indexPathsForVisibleRows else {
+            return
+        }
+        indexPath.forEach {
+            guard let cell = tableView.cellForRow(at: $0) else {
+                return
+            }
             let alarm = alarmStore.alarms[$0.item]
             cell.detailTextLabel?.text = formatCellLeftTime(alarm: alarm)
         }
     }
-    
-    private func formatCellLeftTime(alarm : Alarm) -> String? {
+
+    private func formatCellLeftTime(alarm: Alarm) -> String? {
         let currentDate = Date()
         // Обновляем время в ячейке
         if currentDate > alarm.alarmDate {
@@ -73,7 +77,7 @@ class AlarmListViewController: UIViewController {
         }
         return dateIntervalFormatter.string(from: currentDate, to: alarm.alarmDate)
     }
-    
+
     @objc private func handleNewAlarm() {
         let id = alarmStore.createAlarm()
         router.openAlarmDetails(withID: id, style: .present)
@@ -84,7 +88,7 @@ extension AlarmListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return alarmStore.alarms.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: .cellReuseIdentifier, for: indexPath)
         let alarm = alarmStore.alarms[indexPath.item]

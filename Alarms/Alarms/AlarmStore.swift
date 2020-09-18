@@ -20,21 +20,21 @@ protocol AlarmStoreProtocol: AnyObject {
 }
 
 class AlarmStore: AlarmStoreProtocol {
-    
+
     private let notificationService: UserNotificationServiceProtocol
-    
+
     private let alarmStoreURL: URL = {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         return documentsDirectory.appendingPathComponent("alarms.data")
     }()
-    
+
     var alarms: [Alarm] {
         didSet {
             let notification = Notification(name: .AlarmStoreDidUpdateData)
             NotificationCenter.default.post(notification)
         }
     }
-    
+
     init(notificationService: UserNotificationServiceProtocol) {
         self.notificationService = notificationService
 
@@ -46,7 +46,7 @@ class AlarmStore: AlarmStoreProtocol {
         }
         alarms = decodedAlarms
     }
-    
+
     func createAlarm() -> UUID {
         let alarm = Alarm()
         alarms.append(alarm)
@@ -54,7 +54,7 @@ class AlarmStore: AlarmStoreProtocol {
         save()
         return alarm.id
     }
-    
+
     func updateAlarm(with id: UUID, modification: (inout Alarm) -> Void) {
         guard let index = alarms.firstIndex(where: { $0.id == id }) else {
             fatalError("no alarm with index \(id)")
@@ -68,13 +68,13 @@ class AlarmStore: AlarmStoreProtocol {
         }
         notificationService.scheduleNotification(from: alarm)
     }
-    
+
     func deleteAlarm(with id: UUID) {
         alarms.removeAll(where: { $0.id == id })
         notificationService.removeNotification(with: id)
         save()
     }
-    
+
     func save() {
         print("saving alarms to file \(alarmStoreURL)")
         do {
