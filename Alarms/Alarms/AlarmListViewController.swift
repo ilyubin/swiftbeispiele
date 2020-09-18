@@ -1,10 +1,3 @@
-//
-//  ViewController.swift
-//  Alarms
-//
-//  Created by Vladimir Inozemtsev on 29.08.2020.
-//
-
 import UIKit
 
 class AlarmListViewController: UIViewController {
@@ -46,8 +39,13 @@ class AlarmListViewController: UIViewController {
         )
         RunLoop.main.add(timer, forMode: .common)
         navigationItem.title = "Alarms"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Add", style: .plain, target: self, action: #selector(handleNewAlarm))
+        let addButton = UIBarButtonItem(
+            title: "Add",
+            style: .plain,
+            target: self,
+            action: #selector(handleNewAlarm)
+        )
+        navigationItem.rightBarButtonItem = addButton
     }
 
     @objc private func handleAlarmStoreUpdate() {
@@ -86,7 +84,7 @@ class AlarmListViewController: UIViewController {
 
 extension AlarmListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return alarmStore.alarms.count
+        alarmStore.alarms.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

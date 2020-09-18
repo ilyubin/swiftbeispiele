@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Alarms
-//
-//  Created by Vladimir Inozemtsev on 29.08.2020.
-//
-
 import UIKit
 import UserNotifications
 

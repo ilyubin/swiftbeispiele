@@ -1,10 +1,3 @@
-//
-//  AlarmDetailsViewController.swift
-//  Alarms
-//
-//  Created by Lyubin Igor on 09.09.2020.
-//
-
 import UIKit
 
 protocol AlarmDetailsViewControllerProtocol: AnyObject {
@@ -41,7 +34,9 @@ class AlarmDetailsViewController: UIViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        guard alarmStore.alarms.first(where: { $0.id == id }) != nil else {
+        guard (alarmStore.alarms.first {
+            $0.id == id
+        }) != nil else {
             return
         }
         alarmStore.updateAlarm(with: id) { alarm in
@@ -61,7 +56,6 @@ class AlarmDetailsViewController: UIViewController {
 
     @IBAction func deleteTapped(_ sender: Any) {
         alarmStore.deleteAlarm(with: id)
-        // go to back
         router.pop()
     }
 
@@ -110,7 +104,7 @@ extension AlarmDetailsViewController: AlarmDetailsViewControllerProtocol {
 extension AlarmDetailsViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // скрыть клавиатуры
-        // firstResponsed = то текстовое поле куда кливатура шлет символы
+        // FirstResponder = то текстовое поле куда кливатура шлет символы
         textField.resignFirstResponder()
         // скрываем текстовое поле, показываем кнопку
         UIView.animate(withDuration: 0.5) {
