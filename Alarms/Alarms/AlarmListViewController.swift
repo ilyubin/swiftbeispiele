@@ -30,12 +30,24 @@ class AlarmListViewController: UIViewController {
         tableView.delegate = self
         
         //Перезагружаем список ячеек при изменениях в хранилище
-        NotificationCenter.default.addObserver(self, selector: #selector(handleAlarmStoreUpdate), name: .AlarmStoreDidUpdateData, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleAlarmStoreUpdate),
+            name: .AlarmStoreDidUpdateData,
+            object: nil
+        )
         
-        let timer = Timer(timeInterval: 1, target: self, selector: #selector(handleTimer(_:)), userInfo: nil, repeats: true)
+        let timer = Timer(
+            timeInterval: 1,
+            target: self,
+            selector: #selector(handleTimer(_:)),
+            userInfo: nil,
+            repeats: true
+        )
         RunLoop.main.add(timer, forMode: .common)
         navigationItem.title = "Alarms"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(handleNewAlarm))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Add", style: .plain, target: self, action: #selector(handleNewAlarm))
     }
     
     @objc private func handleAlarmStoreUpdate() {

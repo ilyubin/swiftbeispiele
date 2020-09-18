@@ -37,9 +37,27 @@ class Router: RouterProtocol {
         detailsController.id = id
         switch style {
         case .push:
+            detailsController.canBeDeleted = true
             topNavigationController.pushViewController(detailsController, animated: true)
         case .present:
-            topNavigationController.pushViewController(detailsController, animated: true)
+            detailsController.modalPresentationStyle = .automatic
+            detailsController.canBeDeleted = false
+            let navigationController = UINavigationController(rootViewController: detailsController)
+            let saveButton: UIBarButtonItem = UIBarButtonItem(
+                title: "Save",
+                style: .plain,
+                target: detailsController,
+                action: #selector(AlarmDetailsViewController.saveAlarm)
+            )
+            detailsController.navigationItem.rightBarButtonItem = saveButton
+            let cancelButton: UIBarButtonItem = UIBarButtonItem(
+                title: "Cancel",
+                style: .plain, target:
+                detailsController,
+                action: #selector(AlarmDetailsViewController.cancelAlarm)
+            )
+            detailsController.navigationItem.leftBarButtonItem = cancelButton
+            topNavigationController.present(navigationController, animated: true, completion: nil)
         }
     }
     

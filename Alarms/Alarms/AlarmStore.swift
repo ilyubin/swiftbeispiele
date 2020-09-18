@@ -21,6 +21,8 @@ protocol AlarmStoreProtocol: AnyObject {
 
 class AlarmStore: AlarmStoreProtocol {
     
+    private let notificationService: UserNotificationServiceProtocol
+    
     private let alarmStoreURL: URL = {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         return documentsDirectory.appendingPathComponent("alarms.data")
@@ -33,7 +35,9 @@ class AlarmStore: AlarmStoreProtocol {
         }
     }
     
-    init() {
+    init(notificationService: UserNotificationServiceProtocol) {
+        self.notificationService = notificationService
+
         guard
             let data = try? Data(contentsOf: alarmStoreURL),
             let decodedAlarms = try? JSONDecoder().decode([Alarm].self, from: data) else {
@@ -46,7 +50,7 @@ class AlarmStore: AlarmStoreProtocol {
     func createAlarm() -> UUID {
         let alarm = Alarm()
         alarms.append(alarm)
-//        notificationService.scheduleNotification(from: alarm)
+        notificationService.scheduleNotification(from: alarm)
         save()
         return alarm.id
     }
@@ -59,15 +63,15 @@ class AlarmStore: AlarmStoreProtocol {
         save()
         let alarm = alarms[index]
         if !alarm.shouldNotify {
-//            notificationService.removeNotification(with: alarm.id)
+            notificationService.removeNotification(with: alarm.id)
             return
         }
-//            notificationService.scheduleNotification(from: alarm)
+        notificationService.scheduleNotification(from: alarm)
     }
     
     func deleteAlarm(with id: UUID) {
         alarms.removeAll(where: { $0.id == id })
-//        notificationService.removeNotification(with: id)
+        notificationService.removeNotification(with: id)
         save()
     }
     

@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Хранилище будильников
-    private let alarmStore = AlarmStore()
+    private var alarmStore: AlarmStore!
+    private var notificationService: UserNotificationService!
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -19,11 +21,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //alarmStore.createAlarm()
         //alarmStore.createAlarm()
         
+        notificationService = UserNotificationService()
+        alarmStore = AlarmStore(notificationService: notificationService)
+        
         window = UIWindow(frame: UIScreen.main.bounds)
-        let mainViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "MainViewController") as! AlarmListViewController
+        let mainViewController = UIStoryboard(
+            name: "Main",
+            bundle: .main
+        ).instantiateViewController(identifier: "MainViewController") as! AlarmListViewController
         let rootViewController = UINavigationController(rootViewController: mainViewController)
         
-        let router = Router(alarmStore: alarmStore, topNavigationController: rootViewController)
+        let router = Router(
+            alarmStore: alarmStore,
+            topNavigationController: rootViewController
+        )
         
         //DI
         mainViewController.alarmStore = alarmStore
@@ -31,6 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = rootViewController
         window?.makeKeyAndVisible()
+
+        UNUserNotificationCenter.current().delegate = notificationService
+        notificationService.requestAuthorization()
+        notificationService.router = router
+        notificationService.alarmStore = alarmStore
+        
         return true
     }
 

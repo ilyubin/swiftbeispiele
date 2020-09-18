@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		40249FF12515535A00D227A6 /* UserNotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40249FF02515535A00D227A6 /* UserNotificationService.swift */; };
 		40DA8DAE250972EA00A6EBFE /* AlarmDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40DA8DAD250972EA00A6EBFE /* AlarmDetailsViewController.swift */; };
 		E3572F4A24FAD3C100A1B1BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3572F4924FAD3C100A1B1BF /* AppDelegate.swift */; };
 		E3572F4E24FAD3C100A1B1BF /* AlarmListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3572F4D24FAD3C100A1B1BF /* AlarmListViewController.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		40249FF02515535A00D227A6 /* UserNotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotificationService.swift; sourceTree = "<group>"; };
 		40DA8DAD250972EA00A6EBFE /* AlarmDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmDetailsViewController.swift; sourceTree = "<group>"; };
 		E3572F4624FAD3C100A1B1BF /* Alarms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alarms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3572F4924FAD3C100A1B1BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				E3572F5224FAD3C300A1B1BF /* Assets.xcassets */,
 				E3572F4D24FAD3C100A1B1BF /* AlarmListViewController.swift */,
 				40DA8DAD250972EA00A6EBFE /* AlarmDetailsViewController.swift */,
+				40249FF02515535A00D227A6 /* UserNotificationService.swift */,
 			);
 			path = Alarms;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3572F4E24FAD3C100A1B1BF /* AlarmListViewController.swift in Sources */,
+				40249FF12515535A00D227A6 /* UserNotificationService.swift in Sources */,
 				E3572F4A24FAD3C100A1B1BF /* AppDelegate.swift in Sources */,
 				40DA8DAE250972EA00A6EBFE /* AlarmDetailsViewController.swift in Sources */,
 				E3572F7E24FADBDE00A1B1BF /* Router.swift in Sources */,

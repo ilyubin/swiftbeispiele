@@ -77,25 +77,46 @@
                                     <action selector="datePickerValueChanged:" destination="s6B-Jv-QYY" eventType="valueChanged" id="lAA-Zq-Nei"/>
                                 </connections>
                             </datePicker>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="u19-hw-2LJ">
-                                <rect key="frame" x="16" y="276" width="382" height="101"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="u19-hw-2LJ">
+                                <rect key="frame" x="16" y="276" width="382" height="111"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUG-od-nFz">
-                                        <rect key="frame" x="0.0" y="0.0" width="67" height="30"/>
-                                        <state key="normal" title="Set Name"/>
-                                        <connections>
-                                            <action selector="setNameTapped:" destination="s6B-Jv-QYY" eventType="touchUpInside" id="pv0-6U-xnt"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJX-gz-iMx">
-                                        <rect key="frame" x="0.0" y="35" width="45" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xbP-rG-klG">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KUG-od-nFz">
+                                                <rect key="frame" x="0.0" y="0.0" width="67" height="40"/>
+                                                <state key="normal" title="Set Name"/>
+                                                <connections>
+                                                    <action selector="setNameTapped:" destination="s6B-Jv-QYY" eventType="touchUpInside" id="pv0-6U-xnt"/>
+                                                </connections>
+                                            </button>
+                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CWo-w9-VrB">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="CWo-w9-VrB" firstAttribute="top" secondItem="xbP-rG-klG" secondAttribute="top" id="Azg-pI-Nyo"/>
+                                            <constraint firstItem="KUG-od-nFz" firstAttribute="top" secondItem="xbP-rG-klG" secondAttribute="top" id="S93-er-q7B"/>
+                                            <constraint firstAttribute="bottom" secondItem="KUG-od-nFz" secondAttribute="bottom" id="X5U-Q2-bjb"/>
+                                            <constraint firstItem="KUG-od-nFz" firstAttribute="leading" secondItem="xbP-rG-klG" secondAttribute="leading" id="XEX-yy-50Q"/>
+                                            <constraint firstAttribute="bottom" secondItem="CWo-w9-VrB" secondAttribute="bottom" id="fEM-3I-Z6W"/>
+                                            <constraint firstItem="CWo-w9-VrB" firstAttribute="leading" secondItem="xbP-rG-klG" secondAttribute="leading" id="flq-8Y-isa"/>
+                                            <constraint firstAttribute="trailing" secondItem="CWo-w9-VrB" secondAttribute="trailing" id="mbj-lo-9rZ"/>
+                                            <constraint firstAttribute="height" constant="40" id="nUN-ow-nxS"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJX-gz-iMx">
+                                        <rect key="frame" x="0.0" y="45" width="382" height="30"/>
                                         <state key="normal" title="Delete"/>
                                         <connections>
                                             <action selector="deleteTapped:" destination="s6B-Jv-QYY" eventType="touchUpInside" id="JIM-p4-AF8"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCv-tq-aos">
-                                        <rect key="frame" x="0.0" y="70" width="160" height="31"/>
+                                        <rect key="frame" x="0.0" y="80" width="382" height="31"/>
                                         <subviews>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bcz-R3-3Wi">
                                                 <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
@@ -104,7 +125,7 @@
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notify" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ul-tV-rN1">
-                                                <rect key="frame" x="65" y="0.0" width="95" height="31"/>
+                                                <rect key="frame" x="65" y="0.0" width="317" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -137,7 +158,10 @@
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="vap-by-Fli" id="F8g-W0-BNT"/>
+                        <outlet property="deleteButton" destination="GJX-gz-iMx" id="LWe-xg-fzi"/>
                         <outlet property="notifySwitch" destination="Bcz-R3-3Wi" id="vE0-Fd-jer"/>
+                        <outlet property="setNameButton" destination="KUG-od-nFz" id="GoB-ht-iGI"/>
+                        <outlet property="setNameTextField" destination="CWo-w9-VrB" id="rw4-aM-jpC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Ur-V2-2jb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
