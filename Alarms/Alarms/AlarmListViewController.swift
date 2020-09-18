@@ -35,6 +35,7 @@ class AlarmListViewController: UIViewController {
         let timer = Timer(timeInterval: 1, target: self, selector: #selector(handleTimer(_:)), userInfo: nil, repeats: true)
         RunLoop.main.add(timer, forMode: .common)
         navigationItem.title = "Alarms"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add", style: .plain, target: self, action: #selector(handleNewAlarm))
     }
     
     @objc private func handleAlarmStoreUpdate() {
@@ -59,6 +60,11 @@ class AlarmListViewController: UIViewController {
             return "Expired"
         }
         return dateIntervalFormatter.string(from: currentDate, to: alarm.alarmDate)
+    }
+    
+    @objc private func handleNewAlarm() {
+        let id = alarmStore.createAlarm()
+        router.openAlarmDetails(withID: id, style: .present)
     }
 }
 

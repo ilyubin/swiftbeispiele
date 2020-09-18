@@ -16,8 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        alarmStore.createAlarm()
-        alarmStore.createAlarm()
+        //alarmStore.createAlarm()
+        //alarmStore.createAlarm()
         
         window = UIWindow(frame: UIScreen.main.bounds)
         let mainViewController = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(identifier: "MainViewController") as! AlarmListViewController

@@ -39,7 +39,7 @@ class Router: RouterProtocol {
         case .push:
             topNavigationController.pushViewController(detailsController, animated: true)
         case .present:
-            break
+            topNavigationController.pushViewController(detailsController, animated: true)
         }
     }
     
