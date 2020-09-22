@@ -1,10 +1,3 @@
-//
-//  UserNotificationService.swift
-//  Alarms
-//
-//  Created by Vladimir Inozemtsev on 09.09.2020.
-//
-
 import Foundation
 import UserNotifications
 
@@ -44,7 +37,10 @@ class UserNotificationService: NSObject, UserNotificationServiceProtocol {
         content.badge = 1
         content.categoryIdentifier = userActions
 
-        let dateComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second, ], from: alarm.alarmDate)
+        let dateComponents = Calendar.current.dateComponents(
+            [.year, .month, .day, .hour, .minute, .second, ],
+            from: alarm.alarmDate
+        )
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
         let identifier = alarm.id.uuidString
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
@@ -55,8 +51,16 @@ class UserNotificationService: NSObject, UserNotificationServiceProtocol {
             }
         }
 
-        let snoozeAction = UNNotificationAction(identifier: .snoozeActionIdentifier, title: "Snooze", options: [])
-        let deleteAction = UNNotificationAction(identifier: .deleteActionIdentifier, title: "Delete", options: [.destructive])
+        let snoozeAction = UNNotificationAction(
+            identifier: .snoozeActionIdentifier,
+            title: "Snooze",
+            options: []
+        )
+        let deleteAction = UNNotificationAction(
+            identifier: .deleteActionIdentifier,
+            title: "Delete",
+            options: [.destructive]
+        )
         let category = UNNotificationCategory(
             identifier: userActions,
             actions: [snoozeAction, deleteAction],
@@ -74,11 +78,19 @@ class UserNotificationService: NSObject, UserNotificationServiceProtocol {
 
 extension UserNotificationService: UNUserNotificationCenterDelegate {
 
-    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        willPresent notification: UNNotification,
+        withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+    ) {
         completionHandler([.alert, .sound])
     }
 
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    func userNotificationCenter(
+        _ center: UNUserNotificationCenter,
+        didReceive response: UNNotificationResponse,
+        withCompletionHandler completionHandler: @escaping () -> Void
+    ) {
 
         defer {
             completionHandler()
