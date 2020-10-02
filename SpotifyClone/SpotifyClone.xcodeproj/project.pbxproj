@@ -13,6 +13,9 @@
 		40918BC02527B6FF00AD5E1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40918BBE2527B6FF00AD5E1F /* Main.storyboard */; };
 		40918BC22527B70200AD5E1F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40918BC12527B70200AD5E1F /* Assets.xcassets */; };
 		40918BC52527B70200AD5E1F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40918BC32527B70200AD5E1F /* LaunchScreen.storyboard */; };
+		40918BCD2527B9C800AD5E1F /* Grid2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40918BCC2527B9C800AD5E1F /* Grid2Cell.swift */; };
+		40918BCF2527B9F600AD5E1F /* HeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40918BCE2527B9F600AD5E1F /* HeaderReusableView.swift */; };
+		40918BD12527BBA700AD5E1F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40918BD02527BBA700AD5E1F /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		40918BC12527B70200AD5E1F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		40918BC42527B70200AD5E1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40918BC62527B70200AD5E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		40918BCC2527B9C800AD5E1F /* Grid2Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid2Cell.swift; sourceTree = "<group>"; };
+		40918BCE2527B9F600AD5E1F /* HeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderReusableView.swift; sourceTree = "<group>"; };
+		40918BD02527BBA700AD5E1F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				40918BC12527B70200AD5E1F /* Assets.xcassets */,
 				40918BC32527B70200AD5E1F /* LaunchScreen.storyboard */,
 				40918BC62527B70200AD5E1F /* Info.plist */,
+				40918BCC2527B9C800AD5E1F /* Grid2Cell.swift */,
+				40918BCE2527B9F600AD5E1F /* HeaderReusableView.swift */,
+				40918BD02527BBA700AD5E1F /* Model.swift */,
 			);
 			path = SpotifyClone;
 			sourceTree = "<group>";
@@ -140,6 +149,9 @@
 			files = (
 				40918BBD2527B6FF00AD5E1F /* ViewController.swift in Sources */,
 				40918BB92527B6FF00AD5E1F /* AppDelegate.swift in Sources */,
+				40918BCF2527B9F600AD5E1F /* HeaderReusableView.swift in Sources */,
+				40918BD12527BBA700AD5E1F /* Model.swift in Sources */,
+				40918BCD2527B9C800AD5E1F /* Grid2Cell.swift in Sources */,
 				40918BBB2527B6FF00AD5E1F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
