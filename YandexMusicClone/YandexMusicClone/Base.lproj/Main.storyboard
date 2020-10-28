@@ -26,7 +26,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="carouselCell" id="hUL-zf-STu">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="carouselCell" id="hUL-zf-STu" customClass="CarouselCell" customModule="YandexMusicClone" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="128" height="180"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="liD-mn-opL">
@@ -43,7 +43,7 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="carouselItemCell" id="RMB-0S-nIL">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="carouselItemCell" id="RMB-0S-nIL" customClass="CarouselItemCell" customModule="YandexMusicClone" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="128" height="183"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rJR-zd-Qd2">
@@ -82,6 +82,11 @@
                                                                 </constraints>
                                                             </collectionViewCellContentView>
                                                             <size key="customSize" width="128" height="183"/>
+                                                            <connections>
+                                                                <outlet property="imageView" destination="h6g-3Q-bf9" id="dTn-d7-OT1"/>
+                                                                <outlet property="subText" destination="B9t-vj-cny" id="rxB-nL-5K2"/>
+                                                                <outlet property="text" destination="LYK-ly-gHA" id="588-Ef-edv"/>
+                                                            </connections>
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
@@ -94,9 +99,12 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="128" height="180"/>
+                                        <connections>
+                                            <outlet property="collectionView" destination="be4-V6-Gsu" id="1nK-RP-6s8"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="header" id="YEq-Dp-JKB">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="header" id="YEq-Dp-JKB" customClass="HeaderReusableView" customModule="YandexMusicClone" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -113,6 +121,9 @@
                                         <constraint firstItem="ZHI-wY-gO7" firstAttribute="leading" secondItem="YEq-Dp-JKB" secondAttribute="leadingMargin" constant="8" id="YLw-ZU-O9Q"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="ZHI-wY-gO7" secondAttribute="trailing" constant="8" id="y5o-bF-2sW"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="label" destination="ZHI-wY-gO7" id="Bo7-Ze-52j"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>

@@ -14,6 +14,9 @@
 		40A06620253DB28A00C7A7CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40A0661F253DB28A00C7A7CF /* Assets.xcassets */; };
 		40A06623253DB28A00C7A7CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40A06621253DB28A00C7A7CF /* LaunchScreen.storyboard */; };
 		40A0662B253DB35900C7A7CF /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0662A253DB35900C7A7CF /* Model.swift */; };
+		40A0662D2549FF3500C7A7CF /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0662C2549FF3500C7A7CF /* CarouselCell.swift */; };
+		40A0662F2549FF6400C7A7CF /* CarouselItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0662E2549FF6400C7A7CF /* CarouselItemCell.swift */; };
+		40A066312549FF8C00C7A7CF /* HeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A066302549FF8C00C7A7CF /* HeaderReusableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,9 @@
 		40A06622253DB28A00C7A7CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		40A06624253DB28A00C7A7CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		40A0662A253DB35900C7A7CF /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		40A0662C2549FF3500C7A7CF /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
+		40A0662E2549FF6400C7A7CF /* CarouselItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItemCell.swift; sourceTree = "<group>"; };
+		40A066302549FF8C00C7A7CF /* HeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderReusableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,9 @@
 				40A06621253DB28A00C7A7CF /* LaunchScreen.storyboard */,
 				40A06624253DB28A00C7A7CF /* Info.plist */,
 				40A0662A253DB35900C7A7CF /* Model.swift */,
+				40A0662C2549FF3500C7A7CF /* CarouselCell.swift */,
+				40A0662E2549FF6400C7A7CF /* CarouselItemCell.swift */,
+				40A066302549FF8C00C7A7CF /* HeaderReusableView.swift */,
 			);
 			path = YandexMusicClone;
 			sourceTree = "<group>";
@@ -144,7 +153,10 @@
 				40A0661B253DB28900C7A7CF /* ViewController.swift in Sources */,
 				40A0662B253DB35900C7A7CF /* Model.swift in Sources */,
 				40A06617253DB28900C7A7CF /* AppDelegate.swift in Sources */,
+				40A066312549FF8C00C7A7CF /* HeaderReusableView.swift in Sources */,
 				40A06619253DB28900C7A7CF /* SceneDelegate.swift in Sources */,
+				40A0662F2549FF6400C7A7CF /* CarouselItemCell.swift in Sources */,
+				40A0662D2549FF3500C7A7CF /* CarouselCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
