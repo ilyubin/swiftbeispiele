@@ -1,11 +1,3 @@
-//
-//  Model.swift
-//  SpotifyClone
-//
-//  Created by Lyubin Igor on 02.10.2020.
-//  Copyright © 2020 AP Organization. All rights reserved.
-//
-
 import Foundation
 
 struct SectionViewModel {
@@ -16,6 +8,7 @@ struct SectionViewModel {
 struct CarouselItem {
     let imageName: String
     let text: String
+    let subText: String
 }
 
 enum CellViewModel {

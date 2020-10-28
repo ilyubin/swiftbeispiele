@@ -12,27 +12,57 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let viewModel: [SectionViewModel] = [
-        SectionViewModel(header: "Добрый утро", cells: [
-                .grid2(imageName: "dummy", text: "Brassic"),
-                .grid2(imageName: "dummy", text: "This is bring me the horizon"),
-                .grid2(imageName: "dummy", text: "Brassic"),
-                .grid2(imageName: "dummy", text: "Brassic"),
-                .grid2(imageName: "dummy", text: "Brassic"),
-        ]),
-        SectionViewModel(header: "Добрый день", cells: [
-                .grid2(imageName: "dummy", text: "Brassic"),
-                .grid2(imageName: "dummy", text: "This is bring me the horizon"),
-                .grid2(imageName: "dummy", text: "Brassic"),
-                .grid2(imageName: "dummy", text: "Brassic"),
-                .grid2(imageName: "dummy", text: "Brassic"),
-        ]),
-        SectionViewModel(header: "Добрый вечер", cells: [
-                .grid2(imageName: "dummy", text: "Brassic"),
-                .grid2(imageName: "dummy", text: "This is bring me the horizon"),
-                .grid2(imageName: "dummy", text: "Brassic"),
-                .grid2(imageName: "dummy", text: "Brassic"),
-                .grid2(imageName: "dummy", text: "Brassic"),
-        ]),
+        SectionViewModel(
+            header: "David Garrett",
+            cells: [
+                .grid2(imageName: "dg", text: "What A Wonderful World"),
+                .grid2(imageName: "dgu", text: "Smooth Criminal"),
+                .grid2(imageName: "dge", text: "Dangerous"),
+                .grid2(imageName: "dgr", text: "Smell Like Teen Spirit"),
+                .grid2(imageName: "dgrr", text: "Bitter Sweet Symphony"),
+                .grid2(imageName: "dgt", text: "Allegro non troppo"),
+            ]
+        ),
+        SectionViewModel(
+            header: "Armin van Buuren",
+            cells: [
+                .grid2(imageName: "avb", text: "Que Passa"),
+                .grid2(imageName: "avb1", text: "Black Lion"),
+                .grid2(imageName: "avb2", text: "I Saw Good"),
+                .grid2(imageName: "avb3", text: "All For Love"),
+                .grid2(imageName: "avb4", text: "Kronos"),
+            ]
+        ),
+        SectionViewModel(
+            header: "Ленинград",
+            cells: [
+                .grid2(imageName: "l1", text: "Комон эврибади"),
+                .grid2(imageName: "l2", text: "В Питере — пить"),
+                .grid2(imageName: "l3", text: "Ч.П.Х."),
+                .grid2(imageName: "l4", text: "Вояж"),
+                .grid2(imageName: "l5", text: "Кабриолет"),
+            ]
+        ),
+        SectionViewModel(
+            header: "Уже прослушано",
+            cells: [
+                .carousel(
+                    items: [
+                        CarouselItem(imageName: "dummy", text: "Brassic TV-series"),
+                        CarouselItem(imageName: "dummy", text: "THE ALBUM"),
+                        CarouselItem(imageName: "dummy", text: "Mood booster"),
+                        CarouselItem(imageName: "dummy", text: "That's The Spirit"),
+                        CarouselItem(imageName: "dummy", text: "Up&Up"),
+                        CarouselItem(imageName: "dummy", text: "The Saga of Wiz Khalifa (Deluxe)"),
+                        CarouselItem(imageName: "dummy", text: "Любимые треки"),
+                    ]
+                ),
+                .grid2(imageName: "l1", text: "Комон эврибади"),
+                .grid2(imageName: "l3", text: "Ч.П.Х."),
+                .grid2(imageName: "l4", text: "Вояж"),
+                .grid2(imageName: "l5", text: "Кабриолет"),
+            ]
+        )
     ]
     
     override func viewDidLoad() {
@@ -56,6 +86,10 @@ extension ViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "grid2cell", for: indexPath) as! Grid2Cell
             cell.imageView.image = UIImage(named: imageName)
             cell.label.text = text
+            return cell
+        case .carousel(items: let items):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCell", for: indexPath) as! CarouselCell
+            cell.configure(with: items)
             return cell
         }
     }
@@ -86,6 +120,9 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         case .grid2:
             let w = (view.bounds.width - l.sectionInset.left - l.sectionInset.right - l.minimumInteritemSpacing) / 2
             return CGSize(width: w, height: 60)
+        case .carousel:
+            let w = view.bounds.width - l.sectionInset.left - l.sectionInset.right
+            return CGSize(width: w, height: 160)
         }
     }
 }
