@@ -12,6 +12,6 @@ struct CarouselItem {
 }
 
 enum CellViewModel {
-    case grid2(imageName: String, text: String)
+//    case grid2(imageName: String, text: String)
     case carousel(items: [CarouselItem])
 }
