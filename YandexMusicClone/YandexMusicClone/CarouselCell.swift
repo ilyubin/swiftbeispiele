@@ -54,7 +54,7 @@ extension CarouselCell: UICollectionViewDelegate {
 extension CarouselCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let l = collectionViewLayout as! UICollectionViewFlowLayout
-        let w = (bounds.width - 2 * l.minimumInteritemSpacing) / 3
-        return CGSize(width: w, height: 160)
+        let w = (bounds.width - l.minimumInteritemSpacing - 30) / 2
+        return CGSize(width: w, height: w + 20 + 20)
     }
 }

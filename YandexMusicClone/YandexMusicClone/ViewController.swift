@@ -88,7 +88,7 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 //            return CGSize(width: w, height: 60)
         case .carousel:
             let w = view.bounds.width - l.sectionInset.left - l.sectionInset.right
-            return CGSize(width: w, height: 160)
+            return CGSize(width: w, height: 240)
         }
     }
 }
