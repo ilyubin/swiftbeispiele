@@ -25,6 +25,8 @@ class CarouselCell: UICollectionViewCell {
         clipsToBounds = false
         contentView.clipsToBounds = false
         collectionView.clipsToBounds = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
     }
 }
 
