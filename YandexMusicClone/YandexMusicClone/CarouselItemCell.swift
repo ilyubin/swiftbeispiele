@@ -15,7 +15,7 @@ class CarouselItemCell: UICollectionViewCell {
     weak var text: UILabel!
     @IBOutlet
     weak var subText: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         imageView.layer.cornerRadius = 0

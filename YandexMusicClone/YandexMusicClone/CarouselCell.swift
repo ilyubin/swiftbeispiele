@@ -12,12 +12,12 @@ class CarouselCell: UICollectionViewCell {
     @IBOutlet
     private weak var collectionView: UICollectionView!
     private var viewModel: [CarouselItem] = []
-    
+
     func configure(with vm: [CarouselItem]) {
         viewModel = vm
         collectionView.reloadData()
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         collectionView.delegate = self

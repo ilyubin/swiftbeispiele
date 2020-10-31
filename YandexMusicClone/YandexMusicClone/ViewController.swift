@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet
     weak var collectionView: UICollectionView!
-    
+
     let viewModel: [SectionViewModel] = [
         SectionViewModel(
             header: "Based on your preferences",
@@ -30,7 +30,7 @@ class ViewController: UIViewController {
             ]
         )
     ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -44,7 +44,7 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel[section].cells.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = viewModel[indexPath.section].cells[indexPath.row]
         switch model {
@@ -59,7 +59,7 @@ extension ViewController: UICollectionViewDataSource {
             return cell
         }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         guard kind == UICollectionView.elementKindSectionHeader else {
             fatalError()
@@ -68,14 +68,14 @@ extension ViewController: UICollectionViewDataSource {
         header.label.text = viewModel[indexPath.section].header
         return header
     }
-    
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         viewModel.count
     }
 }
 
 extension ViewController: UICollectionViewDelegate {
-    
+
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout {
