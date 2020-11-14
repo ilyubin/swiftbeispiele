@@ -1,11 +1,11 @@
 import UIKit
 
-class CarouselCell: UICollectionViewCell {
+class GridCell: UICollectionViewCell {
     @IBOutlet
     private weak var collectionView: UICollectionView!
-    private var viewModel: [CarouselItem] = []
+    private var viewModel: [GridItem] = []
 
-    func configureCarousel(with vm: [CarouselItem]) {
+    func configureGrid(with vm: [GridItem]) {
         viewModel = vm
         collectionView.reloadData()
     }
@@ -22,17 +22,17 @@ class CarouselCell: UICollectionViewCell {
     }
 }
 
-extension CarouselCell: UICollectionViewDataSource {
+extension GridCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         viewModel.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = viewModel[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselItemCell", for: indexPath) as! CarouselItemCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gridItemCell", for: indexPath) as! GridItemCell
         cell.imageView.image = UIImage(named: model.imageName)
         cell.text.text = model.text
-        cell.subText.text = model.subText
+//        cell.backgroundColor = UIColor(hexString: "6909A1")
         return cell
     }
 
@@ -41,11 +41,11 @@ extension CarouselCell: UICollectionViewDataSource {
     }
 }
 
-extension CarouselCell: UICollectionViewDelegate {
+extension GridCell: UICollectionViewDelegate {
 
 }
 
-extension CarouselCell: UICollectionViewDelegateFlowLayout {
+extension GridCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let l = collectionViewLayout as! UICollectionViewFlowLayout
         let w = (bounds.width - l.minimumInteritemSpacing - 30) / 2

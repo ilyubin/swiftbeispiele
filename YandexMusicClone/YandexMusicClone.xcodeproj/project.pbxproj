@@ -17,6 +17,8 @@
 		40A0662D2549FF3500C7A7CF /* CarouselCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0662C2549FF3500C7A7CF /* CarouselCell.swift */; };
 		40A0662F2549FF6400C7A7CF /* CarouselItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A0662E2549FF6400C7A7CF /* CarouselItemCell.swift */; };
 		40A066312549FF8C00C7A7CF /* HeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A066302549FF8C00C7A7CF /* HeaderReusableView.swift */; };
+		71997590C781563259914594 /* GridItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 719975DF28A4AFDBE540EFAB /* GridItemCell.swift */; };
+		71997BC027F840884D7C5815 /* GridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71997960F2E118677F0515CE /* GridCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		40A0662C2549FF3500C7A7CF /* CarouselCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselCell.swift; sourceTree = "<group>"; };
 		40A0662E2549FF6400C7A7CF /* CarouselItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselItemCell.swift; sourceTree = "<group>"; };
 		40A066302549FF8C00C7A7CF /* HeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderReusableView.swift; sourceTree = "<group>"; };
+		719975DF28A4AFDBE540EFAB /* GridItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridItemCell.swift; sourceTree = "<group>"; };
+		71997960F2E118677F0515CE /* GridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				40A0662C2549FF3500C7A7CF /* CarouselCell.swift */,
 				40A0662E2549FF6400C7A7CF /* CarouselItemCell.swift */,
 				40A066302549FF8C00C7A7CF /* HeaderReusableView.swift */,
+				71997960F2E118677F0515CE /* GridCell.swift */,
+				719975DF28A4AFDBE540EFAB /* GridItemCell.swift */,
 			);
 			path = YandexMusicClone;
 			sourceTree = "<group>";
@@ -157,6 +163,8 @@
 				40A06619253DB28900C7A7CF /* SceneDelegate.swift in Sources */,
 				40A0662F2549FF6400C7A7CF /* CarouselItemCell.swift in Sources */,
 				40A0662D2549FF3500C7A7CF /* CarouselCell.swift in Sources */,
+				71997BC027F840884D7C5815 /* GridCell.swift in Sources */,
+				71997590C781563259914594 /* GridItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

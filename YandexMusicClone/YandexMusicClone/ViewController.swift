@@ -18,13 +18,40 @@ class ViewController: UIViewController {
             cells: [
                 .carousel(
                     items: [
-                        CarouselItem(imageName: "l1", text: "Brassic TV-series", subText: "1"),
-                        CarouselItem(imageName: "l2", text: "THE ALBUM", subText: "2"),
-                        CarouselItem(imageName: "l3", text: "Mood booster", subText: "3"),
-                        CarouselItem(imageName: "l4", text: "That's The Spirit", subText: "4"),
-                        CarouselItem(imageName: "l5", text: "Up&Up", subText: "5"),
-                        CarouselItem(imageName: "l1", text: "The Saga of Wiz Khalifa (Deluxe)", subText: "6"),
-                        CarouselItem(imageName: "l2", text: "Любимые треки", subText: "7"),
+                        CarouselItem(imageName: "l1", text: "Brassic TV-series", subText: "Updated today"),
+                        CarouselItem(imageName: "l2", text: "THE ALBUM", subText: "Updated yesterday"),
+                        CarouselItem(imageName: "l3", text: "Mood booster", subText: "Updated 12.11"),
+                        CarouselItem(imageName: "l4", text: "That's The Spirit", subText: "Updated 12.11"),
+                        CarouselItem(imageName: "l5", text: "Up&Up", subText: "Updated 11.11"),
+                        CarouselItem(imageName: "l1", text: "The Saga of Wiz Khalifa (Deluxe)", subText: "Updated 11.11"),
+                        CarouselItem(imageName: "l2", text: "Любимые треки", subText: "Updated 10.11"),
+                    ]
+                ),
+            ]
+        ),
+        SectionViewModel(
+            header: "Podcasts",
+            cells: [
+                .carousel(
+                    items: [
+                        CarouselItem(imageName: "l1", text: "Англиский по хитам с флоу и еще немного текста", subText: "9 episodes"),
+                        CarouselItem(imageName: "l2", text: "THE ALBUM", subText: "4 episodes"),
+                        CarouselItem(imageName: "l3", text: "Mood booster", subText: "100 episodes"),
+                        CarouselItem(imageName: "l4", text: "That's The Spirit", subText: "9 episodes"),
+                        CarouselItem(imageName: "l5", text: "Up&Up", subText: "13 episodes"),
+                    ]
+                ),
+            ]
+        ),
+        SectionViewModel(
+            header: "Mixes",
+            cells: [
+                .grid(
+                    items: [
+                        GridItem(imageName: "l1", text: "Popular", color: "9 episodes"),
+                        GridItem(imageName: "l2", text: "New", color: "4 episodes"),
+                        GridItem(imageName: "l3", text: "Timeless Hits", color: "100 episodes"),
+                        GridItem(imageName: "l4", text: "That's The Spirit", color: "9 episodes"),
                     ]
                 ),
             ]
@@ -48,14 +75,13 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let model = viewModel[indexPath.section].cells[indexPath.row]
         switch model {
-//        case .grid2(imageName: let imageName, text: let text):
-//            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "grid2cell", for: indexPath) as! Grid2Cell
-//            cell.imageView.image = UIImage(named: imageName)
-//            cell.label.text = text
-//            return cell
+        case .grid(items: let items):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "gridCell", for: indexPath) as! GridCell
+            cell.configureGrid(with: items)
+            return cell
         case .carousel(items: let items):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "carouselCell", for: indexPath) as! CarouselCell
-            cell.configure(with: items)
+            cell.configureCarousel(with: items)
             return cell
         }
     }
@@ -83,9 +109,9 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
         let model = viewModel[indexPath.section].cells[indexPath.row]
         let l = collectionViewLayout as! UICollectionViewFlowLayout
         switch model {
-//        case .grid2:
-//            let w = (view.bounds.width - l.sectionInset.left - l.sectionInset.right - l.minimumInteritemSpacing) / 2
-//            return CGSize(width: w, height: 60)
+        case .grid:
+            let w = (view.bounds.width - l.sectionInset.left - l.sectionInset.right - l.minimumInteritemSpacing) / 2
+            return CGSize(width: w, height: 60)
         case .carousel:
             let w = view.bounds.width - l.sectionInset.left - l.sectionInset.right
             return CGSize(width: w, height: 240)

@@ -11,7 +11,13 @@ struct CarouselItem {
     let subText: String
 }
 
+struct GridItem {
+    let imageName: String
+    let text: String
+    let color: String
+}
+
 enum CellViewModel {
-//    case grid2(imageName: String, text: String)
     case carousel(items: [CarouselItem])
+    case grid(items: [GridItem])
 }
